@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boring Avatars Generator</title>
+    <style>
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+            }
+            50% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff;
+            }
+            100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+            }
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url('https://get.wallhere.com/photo/pattern-monochrome-telegram-logo-cats-dog-fish-basketball-4k-simple-background-2124957.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3em;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .avatar-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        button:hover {
+            background-color: #ff00ff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 1);
+        }
+
+        img {
+            margin-top: 20px;
+            border: 5px solid #ff00ff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>evorax icon generetor</h1>
+    <div class="avatar-container">
+        <button onclick="generateAvatar()">Generate Avatar</button>
+    </div>
+    <img id="avatar" src="" alt="Avatar will appear here" style="display: none;">
+
+    <script>
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        function generateAvatar() {
+            const randomName = generateRandomString(10);
+            const avatarUrl = `https://source.boringavatars.com/beam/120/${encodeURIComponent(randomName)}`;
+            const avatarImg = document.getElementById('avatar');
+
+            avatarImg.src = avatarUrl;
+            avatarImg.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
